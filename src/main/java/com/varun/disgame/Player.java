@@ -3,7 +3,6 @@ import java.util.*;
 
 public class Player {
     public static long score;
-    public static ArrayList<Integer> choices = new ArrayList<Integer>();
-
-    
+    public static Stack<Integer> choices = new Stack<Integer>();
+    public String name;
 }

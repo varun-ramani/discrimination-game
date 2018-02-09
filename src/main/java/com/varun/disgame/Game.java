@@ -1,11 +1,14 @@
 package com.varun.disgame;
-// import java.util.ArrayList;
-
+import java.util.Scanner;
 public class Game {
-   
-    // public ArrayList<Integer> choices = new ArrayList<Integer>();
+    Scanner scan = new Scanner(System.in);
+    Player player = new Player();
+    public LVL1 level1 = new LVL1();
 
-    public void start() {
-               
+    public void begin() {
+        System       
+        level1.start();
     }
+
+    
 }
