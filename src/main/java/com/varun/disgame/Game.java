@@ -1,8 +1,10 @@
 package com.varun.disgame;
+import java.util.ArrayList;
 
 public class Game {
-    static long score = 0;
-    static boolean isRacist;
+    public static long score = 0;
+    public static boolean isRacist;
+    public ArrayList<Integer> choices = new ArrayList<Integer>();
 
     public void start() {
         
