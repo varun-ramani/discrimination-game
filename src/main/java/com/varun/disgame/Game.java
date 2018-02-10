@@ -6,7 +6,7 @@ import com.varun.disgame.player.*;
 public class Game {
     public void begin() {
         printGameTitle();
-        Player.setName(Utils.readString("Entras Tu Nombre > "));
+        Player.setName(Utils.readString("Entra Tu Nombre > "));
         Player.setLevel(new Sunday());
         Player.play();
     }
