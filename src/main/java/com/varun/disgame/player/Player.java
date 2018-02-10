@@ -1,17 +1,13 @@
-package com.varun.disgame;
+package com.varun.disgame.player;
+import com.varun.disgame.levels.*;
 
 public class Player {
     private static long score = 0;
-    private static String choices = ""; // lol - taking that easy way out
     private static String name = "";
-
+    private static Level level;
 
     public static long getScore() {
         return score;
-    }
-
-    public static String getChoices() {
-        return choices;
     }
 
     public static String getName() {
@@ -22,12 +18,16 @@ public class Player {
         score += amount;
     } 
 
-    public static void appendChoice(char choice) {
-        choices += choice;
-    }
-
     public static void setName(String _name) {
         name = _name;
+    }
+
+    public static void setLevel(Level _level) {
+        level = _level;
+    }
+
+    public static void play() {
+        level.start();
     }
 
 }

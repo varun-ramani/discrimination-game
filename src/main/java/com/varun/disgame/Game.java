@@ -1,14 +1,14 @@
 package com.varun.disgame;
 
-import com.varun.disgame.levels.*;
+import com.varun.disgame.levels.Sunday;
+import com.varun.disgame.player.*;
 
 public class Game {
-    private Level[] levels = {
-        new LVL1()
-    };
-
     public void begin() {
         printGameTitle();
+        Player.setName(Utils.readString("Entras Tu Nombre > "));
+        Player.setLevel(new Sunday());
+        Player.play();
     }
 
     public void printGameTitle() {

@@ -4,7 +4,7 @@ public class Utils {
     private static Scanner scan = new Scanner(System.in);
 
     public static String readString(String prompt) {
-        print(prompt);
+        coolPrint(prompt, 10);
         return scan.nextLine();
     }
 
@@ -43,11 +43,28 @@ public class Utils {
         }
     }
 
+    public static String genLevelTitle(String day, String date) {
+        return genHeader(day + ", " + date);
+    }
+
     public static void println(Object toPrint) {
         System.out.println(toPrint);
     }
 
     public static void print(Object toPrint) {
         System.out.print(toPrint);
+    }
+
+    public static String storyPrompt(String story, String[] options) {
+        String build = story + "\n"; 
+        
+        for (int i = 0; i < options.length; i++) {
+            build += String.format("\t%d. %s\n", i + 1, options[i]);    
+        }
+        
+        build += "> ";
+
+        return build;
+
     }
 }
