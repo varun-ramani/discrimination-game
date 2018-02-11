@@ -42,20 +42,24 @@ public class Sunday extends Level {
                 appendChoice(
                     Utils.readChar(
                         Utils.storyPrompt(
-                            String.format("9:00 AM >> <Un amigo negro de %s llama en el telefono>\n<Se dice 'Quiero almuerzo con tu - donde quieres?'>\n%s necessita selecionar un paiz favorito de amigo negro. Donde?\n", Player.getName()), new String[] {
+                            String.format("9:00 AM >> <Un amigo negro de %s llama en el telefono>\nAmigo: 'Quiero almuerzo con tu - donde quieres?'>\n", Player.getName()), new String[] {
                                 "Taco Bell porque es tu paiz favorito",
                                 "KFC porque el amigo es negro"
                             }
                         )
                     )
                 );
-            case "1#1":
-            case "2#1":
+
+            case "1#2":
+            case "2#2":
                 Utils.coolPrint(
-                    String.format("")
-                )
-                
-            
+                    String.format("Amigo: Discriminacion! No son amigos despues ahora!\n"), 10
+                );
+                Player.changeScore(-10);
+                break;
+
+            case "1#1":
+ 		               
             default:
                 Utils.coolPrint(String.format("%c no es un option verdad!\n", getChoices().charAt(getChoices().length() - 1)), 10);
                 undoLastChoice();
