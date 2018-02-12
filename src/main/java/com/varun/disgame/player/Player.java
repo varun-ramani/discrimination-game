@@ -1,10 +1,12 @@
 package com.varun.disgame.player;
 import com.varun.disgame.levels.*;
+import com.varun.disgame.player.character.Character;
 
 public class Player {
     private static long score = 0;
     private static String name = "";
     private static Level level;
+    private static Character character;
 
     public static long getScore() {
         return score;
@@ -30,4 +32,11 @@ public class Player {
         level.start();
     }
 
+    public static void setCharacter(Character c) {
+        character = c;
+    }
+
+    public static Character getCharacter() {
+        return character;
+    }
 }

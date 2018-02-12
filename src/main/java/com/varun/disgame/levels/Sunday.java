@@ -9,6 +9,8 @@ public class Sunday extends Level {
         while(!(isDone())) {
             loop();
         }
+        Player.setLevel(new Monday());
+        Player.play();
     }
 
     public void loop() {
@@ -17,7 +19,7 @@ public class Sunday extends Level {
                 appendChoice(
                     Utils.readChar(
                         Utils.storyPrompt(
-                            String.format("8:00 AM >> <la alarma de %s sona>\n", Player.getName()), new String[] {
+                            String.format("8:00 AM  >> < la alarma de %s sona >\n", Player.getName()), new String[] {
                                 "Snooze", 
                                 "Dismiss"
                             }
@@ -26,40 +28,61 @@ public class Sunday extends Level {
                 );
                 break;
             case "1":
-                Utils.coolPrint(String.format("8:10 AM >> <%s levantanse>\n", Player.getName()), 10);
+                Utils.coolPrint(String.format("8:10 AM  >> < %s levantanse >\n", Player.getName()), 10);
                 appendChoice('#');
                 break;
             case "2":
-                Utils.coolPrint(String.format("8:01 AM >> <%s levantanse>\n", Player.getName()), 10);
+                Utils.coolPrint(String.format("8:01 AM  >> < %s levantanse >\n", Player.getName()), 10);
                 appendChoice('#');
                 break;
             case "1#":
             case "2#":
                 Utils.coolPrint(
-                    String.format("8:15 AM >> <%s se cepillarse los dientes>\n8:20 AM >> <%s se ducharse>\n8:35 AM >> <%s de desayunarse>\n", Player.getName(), Player.getName(), Player.getName()), 
+                    String.format("8:15 AM  >> < %s se cepillarse los dientes >\n8:20 AM  >> < %s se ducharse >\n8:35 AM  >> < %s de desayunarse >\n", Player.getName(), Player.getName(), Player.getName()),
                     10
                 );
                 appendChoice(
                     Utils.readChar(
                         Utils.storyPrompt(
-                            String.format("9:00 AM >> <Un amigo negro de %s llama en el telefono>\nAmigo: 'Quiero almuerzo con tu - donde quieres?'>\n", Player.getName()), new String[] {
-                                "Taco Bell porque es tu paiz favorito",
+                            String.format("9:00 AM  >> < Un amigo negro de %s llama en el telefono >\nAmigo: 'Quiero almuerzo con tu - donde quieres?'\n", Player.getName()), new String[] {
                                 "KFC porque el amigo es negro"
                             }
                         )
                     )
                 );
-
-            case "1#2":
-            case "2#2":
-                Utils.coolPrint(
-                    String.format("Amigo: Discriminacion! No son amigos despues ahora!\n"), 10
-                );
-                Player.changeScore(-10);
                 break;
 
             case "1#1":
- 		               
+            case "2#1":
+                Utils.coolPrint(
+                    String.format("Amigo: Discriminacion!\n%s: No soy un racisto!\n", Player.getName()), 10
+                );
+                appendChoice(
+                    Utils.readChar(
+                        Utils.storyPrompt(
+                            String.format("Amigo: Debias probarlo!\n"),
+                            new String[] {
+                                "Vale",
+                                "Er... vale?",
+                                "No me encanta la idea, pero vale."
+                            }
+                        )
+                    )
+                );
+
+                break;
+            case "1#11":
+            case "2#11":
+            case "1#12":
+            case "2#12":
+            case "1#13":
+            case "2#13":
+                Utils.coolPrint(
+                    String.format("Amigo: Bien!\n"), 10
+                );
+                setDone();
+                break;
+
             default:
                 Utils.coolPrint(String.format("%c no es un option verdad!\n", getChoices().charAt(getChoices().length() - 1)), 10);
                 undoLastChoice();
