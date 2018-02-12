@@ -2,29 +2,43 @@ package com.varun.disgame.levels;
 
 import com.varun.disgame.Utils;
 import com.varun.disgame.player.Player;
-import com.varun.disgame.player.character.*;
+import com.varun.disgame.player.character.Baker;
+import com.varun.disgame.player.character.Businessman;
 import com.varun.disgame.player.character.Character;
+import com.varun.disgame.player.character.Programmer;
 
-public class Monday extends Level {
+public class Wednesday extends Level {
     public void start() {
-        Utils.coolPrint(Utils.genLevelTitle("Lunes", "5 Febrero 2018"), 20);
+        Utils.coolPrint(Utils.genLevelTitle("Miercoles", "28 Febrero 2018"), 20);
         while(!(isDone())) {
             loop();
         }
-        Player.setLevel(new Tuesday());
-        Player.play();
+
     }
 
     public void loop() {
         switch(getChoices()) {
             case "":
+                appendChoice('#');
+                Utils.coolPrint(
+                    Utils.storyPrompt(
+                        String.format("6:00 AM  >> < la alarma de %s sona>\n6:05 AM  >> %s se lavantanse. Ahoy, tiene un reunion no con su jefe - con EL jefe! Es muy importante. \nPero - que camisa?", Player.getName(), Player.getName()), new String[] {
+                            "La camisa azul",
+                            "La camisa verde",
+                            "La camisa negro"
+                        }
+                    ),
+                    10
+                );
+                break;
+            case "#":
                 appendChoice(
                     Utils.readChar(
                         Utils.storyPrompt(
-                            String.format("6:00 AM  >> < la alarma de %s sona>\n%s necessita ir a su paiz de trabajar; es un ________.\n", Player.getName(), Player.getName()), new String[] {
-                                "Programador",
-                                "Empresario",
-                                "Panedero"
+                            String.format("%s queria una augmento de la salario.\nPero, cuando visita el jefe, %s nota que el jefe es negro!\n", Player.getName()),
+                            new String[] {
+                                "Tratar el jefe con respecto",
+                                "Jefe es negro - no necesita respecto!"
                             }
                         )
                     )
@@ -83,15 +97,14 @@ public class Monday extends Level {
             case "1#2#":
             case "2#2#":
             case "3#2#":
-                Utils.coolPrint("La maleta se abri - tenio muchas botellas.\nLos botellas tenia medicinas para la hija pequeno de el musulman.\nSu hija es enfermo - tiene un enfermo horible, y el musulman solo queria tomar medicinas\npara su hija. Hable con su esposa sobre la condicion critical de la hija.\n", 10);
+                Utils.coolPrint("La maleta se abri - tenio muchas botellas.\nLos botellas tenia medicinas para la hija pequeno de el musulman.\nSu hija es enfermo - tiene un enfermo horible, y el musulman solo queria tomar medicinas para su hija.\nHable con su esposa sobre la condicion critical de la hija.", 10);
                 if (getChoices().charAt(getChoices().length() - 2) == '2') {
-                    Utils.coolPrint("En el telefono, la madre grita: 'ERA MUERTE!! ERA MUERTE!!' Pero, despues de ataque, el musulman no tiene conciencia.\n", 10);
+                    Utils.coolPrint("En el telefono, la madre grita: 'ERA MUERTE!! ERA MUERTE!!' Pero, despues de ataque, el musulman no tiene conciencia.", 10);
                 } else {
-                    Utils.coolPrint("En la telefono, la madre grita: 'VA A NUESTRO CASA AHORA!!'\n", 10);
+                    Utils.coolPrint("En la telefono, la madre grita: 'VA A NUESTRO CASA AHORA!!'", 10);
                 }
                 setDone();
                 break;
-
             default:
                 Utils.coolPrint(String.format("%c no es un option verdad!\n", getChoices().charAt(getChoices().length() - 1)), 10);
                 undoLastChoice();
