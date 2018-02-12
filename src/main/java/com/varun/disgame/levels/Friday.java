@@ -8,7 +8,7 @@ import com.varun.disgame.player.Player;
  */
 public class Friday extends Level {
     public void start(){
-        Utils.coolPrint(Utils.genLevelTitle("Lunes", "26 Febrero 2018"), 20);
+        Utils.coolPrint(Utils.genLevelTitle("Viernes", "2 Marzo 2018"), 20);
         while(!(isDone())) {
             loop();
         }

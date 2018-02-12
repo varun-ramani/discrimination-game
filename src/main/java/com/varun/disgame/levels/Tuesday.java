@@ -20,11 +20,11 @@ public class Tuesday extends Level{
     public void loop(){
         switch(getChoices()) {
             case "":
-                Utils.coolPrint(String.format("8:00 AM >> <%s desperto>\n8:15 AM >> <%s cepillo sus dientes>/n", Player.getName(),Player.getName()), 10);
+                Utils.coolPrint(String.format("8:00 AM >> <%s desperto>\n8:15 AM >> <%s cepillo sus dientes>\n", Player.getName(),Player.getName()), 10);
                 appendChoice(
                         Utils.readChar(
                                 Utils.storyPrompt(
-                                        String.format("8:30 AM >> <%s camino hacia tu trabajo>\n8:40 AM >> <%s vio a una persona china que hablaba con un acento extraño. \nLa persona estaba intentando vender algo y nada persona estaba comprando>/n*¿Que hizo?", Player.getName(),Player.getName()), new String[] {
+                                        String.format("8:30 AM >> <%s camino hacia tu trabajo>\n8:40 AM >> <%s vio a una persona china que hablaba con un acento extraño. \nLa persona estaba intentando vender algo y nada persona estaba comprando>\n¿Que hizo?", Player.getName(),Player.getName()), new String[] {
                                                 "Comprar educadamente y sonriale",
                                                 "Búrlate de su acento y camine hacia tu trabajo como un " + Player.getCharacter().getJobTitle(),
                                                 "No dijo nada y sigue camine\n"

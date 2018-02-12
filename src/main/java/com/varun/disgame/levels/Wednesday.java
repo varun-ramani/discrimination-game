@@ -13,6 +13,8 @@ public class Wednesday extends Level {
         while(!(isDone())) {
             loop();
         }
+        Player.setLevel(new Thursday());
+        Player.play();
 
     }
 
@@ -20,93 +22,44 @@ public class Wednesday extends Level {
         switch(getChoices()) {
             case "":
                 appendChoice('#');
-                Utils.coolPrint(
+                Utils.readChar(
                     Utils.storyPrompt(
                         String.format("6:00 AM  >> < la alarma de %s sona>\n6:05 AM  >> %s se lavantanse. Ahoy, tiene un reunion no con su jefe - con EL jefe! Es muy importante. \nPero - que camisa?", Player.getName(), Player.getName()), new String[] {
                             "La camisa azul",
                             "La camisa verde",
                             "La camisa negro"
                         }
-                    ),
-                    10
+                    )
                 );
                 break;
             case "#":
                 appendChoice(
                     Utils.readChar(
                         Utils.storyPrompt(
-                            String.format("%s queria una augmento de la salario.\nPero, cuando visita el jefe, %s nota que el jefe es negro!\n", Player.getName()),
+                            String.format("%s queria una augmento de la salaria.\nPero, cuando visita el jefe, %s nota que el jefe es negro!\n", Player.getName(), Player.getName()),
                             new String[] {
-                                "Tratar el jefe con respecto",
+                                "Tratar el jefe con respecto - su color no es importante.",
                                 "Jefe es negro - no necesita respecto!"
                             }
                         )
                     )
                 );
                 break;
-            case "1":
-                Player.setCharacter(new Programmer());
-                Utils.coolPrint(
-                    String.format("%s %s en %s.\n", Player.getName(), Player.getCharacter().getJobVerb(Character.Conjugations.EL_ELLA_USTED), Player.getCharacter().getWorkplace()), 10
-                );
-                appendChoice('#');
+            case "#1":
+                Player.changeScore(1);
+                Utils.coolPrint(String.format("Jefe de %s: Vale! %s, antes, tu salaria era $1 en un ano! Ahora... es $1.50 en un ano!\n", Player.getCharacter().getWorkplace(), Player.getName()), 20);
+                Utils.coolPrint(String.format("%s: Gracias! Finalmente, puedo comprar una computadora para iFunny!\n", Player.getName()), 20);
+                Utils.coolPrint("Jefe: iFunny? Reddit tiene memes superior!\n", 20);
+                Utils.coolPrint(String.format("%s: Reddit tenia memes superior, pero ahora, iFunny tiene memes fantastico!\n", Player.getName()), 20);
+                setDone();
                 break;
-            case "2":
-                Player.setCharacter(new Businessman());
-                Utils.coolPrint(
-                    String.format("%s %s en %s.\n", Player.getName(), Player.getCharacter().getJobVerb(Character.Conjugations.EL_ELLA_USTED), Player.getCharacter().getWorkplace()), 10
-                );
-                appendChoice('#');
-                break;
-            case "3":
-                Player.setCharacter(new Baker());
-                Utils.coolPrint(
-                    String.format("%s %s en %s.\n", Player.getName(), Player.getCharacter().getJobVerb(Character.Conjugations.EL_ELLA_USTED), Player.getCharacter().getWorkplace()), 10
-                );
-                appendChoice('#');
-                break;
-            case "1#":
-            case "2#":
-            case "3#":
-                appendChoice(
-                    Utils.readChar(
-                        Utils.storyPrompt(
-                            String.format("Cuando %s camina a %s, ve a un musulman. El musulman tiene una barba larga, tiene un maleta masivo, y habla urgentemente en su Motorola DynaTAC 8000X.\n%s escucha palabras estranas. %s necessita ________", Player.getName(), Player.getCharacter().getWorkplace(), Player.getName(), Player.getName()),
-
-                            new String[] {
-                                String.format("Caminar a %s", Player.getCharacter().getWorkplace()),
-                                "ATAQUE EL MUSULMAN!"
-                            }
-                        )
-                    )
-                );
-                break;
-            case "1#1":
-            case "2#1":
-            case "3#1":
-                Player.changeScore(10);
-                appendChoice('#');
-            case "1#2":
-            case "2#2":
-            case "3#2":
-                Player.changeScore(-10);
-                appendChoice('#');
-            case "1#1#":
-            case "2#1#":
-            case "3#1#":
-            case "1#2#":
-            case "2#2#":
-            case "3#2#":
-                Utils.coolPrint("La maleta se abri - tenio muchas botellas.\nLos botellas tenia medicinas para la hija pequeno de el musulman.\nSu hija es enfermo - tiene un enfermo horible, y el musulman solo queria tomar medicinas para su hija.\nHable con su esposa sobre la condicion critical de la hija.", 10);
-                if (getChoices().charAt(getChoices().length() - 2) == '2') {
-                    Utils.coolPrint("En el telefono, la madre grita: 'ERA MUERTE!! ERA MUERTE!!' Pero, despues de ataque, el musulman no tiene conciencia.", 10);
-                } else {
-                    Utils.coolPrint("En la telefono, la madre grita: 'VA A NUESTRO CASA AHORA!!'", 10);
-                }
+            case "#2":
+                Player.changeScore(-1);
+                Utils.coolPrint(String.format("Jefe: Despues de ahora, no eras una %s en %s. Tu salaria es $0.01 en un ano ahora. Racista estupida!\n", Player.getCharacter().getJobTitle(), Player.getCharacter().getWorkplace()), 20);
                 setDone();
                 break;
             default:
-                Utils.coolPrint(String.format("%c no es un option verdad!\n", getChoices().charAt(getChoices().length() - 1)), 10);
+                Utils.coolPrint(String.format("%c no es un option verdad!\n", getChoices().charAt(getChoices().length() - 1)), 20);
                 undoLastChoice();
                 break;
         }

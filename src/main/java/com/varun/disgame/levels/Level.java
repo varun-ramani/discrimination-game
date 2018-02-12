@@ -19,9 +19,6 @@ public abstract class Level {
     public boolean isDone() {
         return done;
     }
-    public void setChoices(String c) {
-        choices = new StringBuilder(c);
-    }
     public abstract void loop();
 
     public void setChoices(String choices) {
