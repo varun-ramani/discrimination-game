@@ -13,6 +13,8 @@ public class Tuesday extends Level{
         while(!(isDone())) {
             loop();
         }
+        Player.setLevel(new Wednesday());
+        Player.play();
     }
 
     public void loop(){

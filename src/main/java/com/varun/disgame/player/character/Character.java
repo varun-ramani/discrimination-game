@@ -54,6 +54,10 @@ public class Character {
         return jobVerb;
     }
 
+    public String getJobVerb(int conjugation) {
+        return getJobVerb(conjugation, 0);
+    }
+
     public String getWorkplace() {
         return workplace;
     }
