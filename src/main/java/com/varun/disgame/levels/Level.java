@@ -22,4 +22,8 @@ public abstract class Level {
 
     public abstract void loop();
 
+    public void setChoices(String choices) {
+        this.choices = new StringBuilder(choices);
+    }
+
 }
