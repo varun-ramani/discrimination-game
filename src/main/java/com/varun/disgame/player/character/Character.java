@@ -13,7 +13,7 @@ public class Character {
         public static final int ELLOS_ELLAS_USTEDES = 5;
     }
 
-    public String getJobVerb(int conjugation) {
+    public String getJobVerb(int conjugation,int pretImp) {
         String verbStem = jobVerb.substring(0, jobVerb.length() - 2);
         char conjugationLetter = jobVerb.charAt(jobVerb.length() - 2);
         String i_conjugation = "o";
@@ -22,6 +22,22 @@ public class Character {
         String nosotros_conjugation = ((conjugationLetter == 'e' || conjugationLetter == 'i') ? 'i' : 'a') + "mos";
         String eeu_plural_conjugation = conjugationLetter + "n";
 
+        switch(pretImp) {
+            case(1):
+                i_conjugation = String.valueOf((conjugationLetter == 'e' || conjugationLetter == 'í') ? 'i' : 'é');
+                you_conjugation = String.valueOf((conjugationLetter == 'e' || conjugationLetter == 'í') ? "iste" : "aste");
+                eeu_conjugation = String.valueOf((conjugationLetter == 'e' || conjugationLetter == 'í') ? "ió" : "ó");
+                nosotros_conjugation = ((conjugationLetter == 'e' || conjugationLetter == 'i') ? 'i' : 'a') + "mos";
+                eeu_plural_conjugation = String.valueOf((conjugationLetter == 'e' || conjugationLetter == 'í') ? "ieron" : "aron");
+            break;
+            case(2):
+                i_conjugation = String.valueOf((conjugationLetter == 'e' || conjugationLetter == 'í') ? "ía" : "aba");
+                you_conjugation = String.valueOf((conjugationLetter == 'e' || conjugationLetter == 'í') ? "ías" : "abas");
+                eeu_conjugation = String.valueOf((conjugationLetter == 'e' || conjugationLetter == 'í') ? "ía" : "aba");
+                nosotros_conjugation = ((conjugationLetter == 'e' || conjugationLetter == 'i') ? 'i' : "áb") + "amos";
+                eeu_plural_conjugation = String.valueOf((conjugationLetter == 'e' || conjugationLetter == 'í') ? "ían" : "aban");
+            break;
+        }
         switch(conjugation) {
             case 1:
                 return verbStem + i_conjugation;
