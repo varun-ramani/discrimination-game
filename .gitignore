@@ -1,0 +1,8 @@
+build/
+bin/
+.settings
+.meghanada
+.idea
+.gradle
+Historia.txt
+.project
